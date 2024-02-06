@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  //APIDOCUMENTATION: https://calorieninjas.com/api
+
+  const [searchResult, setSearchResult] = useState({});
+  const [searchWord, setSearchWord] = useState("");
+
+  // useEffect(() => {
+  //   fetch("https://api.calorieninjas.com/v1/nutrition?query=banana", {
+  //     headers: {
+  //       "X-Api-Key": "1NCL2QnaNfKPnwFzFlWyGQ==rtw2xVObNjB0h2tS",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setSearchResult(data.items[0]));
+  // }, []);
+
+  const handleInputChange = (event) => {
+    setSearchWord(event.target.value);
+  };
+
+  const search = () => {
+    fetch(`https://api.calorieninjas.com/v1/nutrition?query=${searchWord}`, {
+      headers: {
+        "X-Api-Key": "1NCL2QnaNfKPnwFzFlWyGQ==rtw2xVObNjB0h2tS",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setSearchResult(data.items[0]));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div style={{ height: "100vh" }}>
+        <div>
+          <input
+            value={searchWord}
+            onChange={(event) => handleInputChange(event)}
+          />
+          <button onClick={() => search()}>search</button>
+        </div>
+
+        <p>name : {searchResult.name}</p>
+        <p>calories: {searchResult.calories}</p>
+        <p>serving_size_g: {searchResult.serving_size_g}</p>
+        <p>fat_total_g: {searchResult.fat_total_g}</p>
+        <p>fat_saturated_g: {searchResult.fat_saturated_g}</p>
+        <p>protein_g: {searchResult.protein_g}</p>
+        <p>sodium_mg: {searchResult.sodium_mg}</p>
+        <p>potassium_mg: {searchResult.potassium_mg}</p>
+        <p>cholesterol_mg: {searchResult.cholesterol_mg}</p>
+        <p>carbohydrates_total_g: {searchResult.carbohydrates_total_g}</p>
+        <p>fiber_g: {searchResult.fiber_g}</p>
+        <p>sugar_g: {searchResult.sugar_g}</p>
+        <p>perkele</p>
       </div>
-      <h1>Vite + OPWHITE2</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
