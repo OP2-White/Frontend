@@ -30,6 +30,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => setSearchResult(data.items[0]));
+      console.log(searchResult);
   };
 
   return (
