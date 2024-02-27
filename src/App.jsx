@@ -32,7 +32,7 @@ function App() {
       .then((data) => setSearchResult(data.items[0]));
       console.log(searchResult);
   };
-
+  
   return (
     <>
       <div style={{ height: "100vh" }}>
@@ -57,6 +57,7 @@ function App() {
         <p>fiber_g: {searchResult.fiber_g}</p>
         <p>sugar_g: {searchResult.sugar_g}</p>
         <p>perkele</p>
+
       </div>
     </>
   );

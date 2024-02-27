@@ -83,13 +83,30 @@ function CreateProduct(){
         console.log(list);
     }, [list]);
     
+    const saveToDatabase = () => {
+        fetch("http://localhost:8008/foodlistREST", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(searchResult),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Tallennus onnistui:', data);
+        })
+        .catch((error) => {
+          console.error('Tallennusvirhe:', error);
+        });
+    }
+    
     return(
         <>
         <p>Create new product:</p>
             <form>
                 {renderFields()}
             </form>
-        <button onClick={addProduct}>Add Product</button>
+            <button onClick={saveToDatabase}>Save</button>
         </>
     )
 }
