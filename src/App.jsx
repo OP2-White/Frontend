@@ -58,6 +58,7 @@ function App() {
         <p>sugar_g: {searchResult.sugar_g}</p>
         <p>perkele</p>
 
+        
       </div>
     </>
   );
