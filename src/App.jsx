@@ -16,6 +16,9 @@ function App() {
             <Link to={"calorieconsumption"} className="navigationLink">
               Calorie consumption calculator
             </Link>
+            <Link to={"foodconsumption"} className="navigationLink">
+              food Consumption
+            </Link>
           </nav>
         </div>
         <Outlet />

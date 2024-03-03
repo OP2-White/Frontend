@@ -6,6 +6,7 @@ import CreateProduct from "./components/CreateProduct.jsx";
 import "./index.css";
 import CalorieCalculator from "./components/kalorilaskuri.jsx";
 import SearchProducts from "./components/SearchProducts.jsx";
+import CalculateConsumption from "./components/Calculateconsumption.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "calorieconsumption",
         element: <CalorieCalculator />,
+      },
+      {
+        path: "foodconsumption",
+        element: <CalculateConsumption />,
       },
     ],
   },
