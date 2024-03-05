@@ -11,13 +11,13 @@ function App() {
               Home
             </Link>
             <Link to={"create-product"} className="navigationLink">
-              Create product
+              Add food products
             </Link>
             <Link to={"calorieconsumption"} className="navigationLink">
-              Calorie consumption calculator
+              Estimated calorie consumption calculator
             </Link>
             <Link to={"foodconsumption"} className="navigationLink">
-              food Consumption
+              your total Calories
             </Link>
           </nav>
         </div>
