@@ -59,3 +59,10 @@ function CalculateConsumption() {
   );
 }
 export default CalculateConsumption
+
+
+/*
+Luodaan repository käyttäjän syömisille. Jokaiselle repositorylle tallennetulle ruualle
+annetaan automaattisesti arvoksi nykyinen päivämäärä. Päivän syömiset saadaan,
+kun lajitellaan repositoryä päivämäärän mukaan
+*/
