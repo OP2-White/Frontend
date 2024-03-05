@@ -53,7 +53,6 @@ export default function SearchProducts() {
         <p>carbohydrates_total_g: {searchResult.carbohydrates_total_g}</p>
         <p>fiber_g: {searchResult.fiber_g}</p>
         <p>sugar_g: {searchResult.sugar_g}</p>
-        <p>perkele</p>
       </div>
     </>
   );
