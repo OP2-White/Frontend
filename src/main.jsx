@@ -4,9 +4,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import CreateProduct from "./components/CreateProduct.jsx";
 import "./index.css";
-import CalorieCalculator from "./components/kalorilaskuri.jsx";
+import CalorieCalculator from "./components/CalculateYourConsumption.jsx";
 import SearchProducts from "./components/SearchProducts.jsx";
-import CalculateConsumption from "./components/Calculateconsumption.jsx";
+import CalculateConsumption from "./components/TotalCalories.jsx";
 
 const router = createBrowserRouter([
   {
