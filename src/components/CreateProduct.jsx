@@ -22,7 +22,7 @@ function CreateProduct(){
 
     const fields = [
         { name: 'name', label: 'Name' },
-        { name: 'calories', label: 'Calories' },
+        { name: 'calories', label: 'Calories', },
         { name: 'serving_size_g', label: 'Serving Size (g)' },
         { name: 'fat_total_g', label: 'Total Fat (g)' },
         { name: 'fat_saturated_g', label: 'Saturated Fat (g)' },
