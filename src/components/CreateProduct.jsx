@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 function CreateProduct() {
   const [newProduct, setNewProduct] = useState({
     foodName: "",
-    calories: 0,
-    protein: 0,
-    carbs: 0,
-    fat: 0,
+    calories: null,
+    protein: null,
+    carbs: null,
+    fat: null,
   });
 
   const fields = [
@@ -60,6 +60,14 @@ function CreateProduct() {
       }
 
       console.log("Data saved successfully");
+      setNewProduct({
+        foodName: "",
+        calories: "",
+        protein: "",
+        carbs: "",
+        fat: "",
+      });
+
     } catch (error) {
       console.error("Tallennusvirhe:", error.message);
     }
