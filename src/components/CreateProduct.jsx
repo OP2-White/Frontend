@@ -10,6 +10,9 @@ function CreateProduct() {
     sugar: null,
   });
 
+  //Lista jota käytetään tietokannan näyttämisessä.
+  const [foodList, setFoodList] = useState([])
+
   const fields = [
     { name: "foodName", label: "Name", type: "text"},
     { name: "calories", label: "Calories", type: "number" },
@@ -17,11 +20,6 @@ function CreateProduct() {
     { name: "carbs", label: "Carbs", type: "number"},
     { name: "fat", label: "Fat" , type: "number"},
     { name: "sugar", label: "Sugar" , type: "number"},
-    { name: "foodName", label: "Name" },
-    { name: "calories", label: "Calories" },
-    { name: "protein", label: "Protein" },
-    { name: "carbs", label: "Carbs" },
-    { name: "fat", label: "Fat" },
   ];
 
   const renderFields = () => {
@@ -40,6 +38,9 @@ function CreateProduct() {
       </div>
     ));
   };
+
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -81,11 +82,42 @@ function CreateProduct() {
     }
   };
 
+  useEffect(() => {
+    const fetchFoodList = async() => {
+      try {
+        const response = await fetch(
+          "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodListREST"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setFoodList(data);
+      } catch (error) {
+        console.error("Fetch error:", error.message);
+      }
+    };
+    fetchFoodList();
+  }, [foodList])
+
   return (
+    <div className="create-product">
+
     <div className="createProductContainer">
-      <p>Create new product:</p>
-      <form>{renderFields()}</form>
-      <button onClick={() => saveToDatabase()}>Save</button>
+        <p>Create new product:</p>
+        <form>{renderFields()}</form>
+        <button onClick={() => saveToDatabase()}>Save</button>
+      </div>
+      <div className="list-product">
+      <p>Previously created:</p>
+        <ul>
+          {foodList.map((food, index) => (
+            <li key={index}>
+              {food.foodName} - {food.calories} calories
+            </li>
+          ))}
+        </ul>
+        </div>
     </div>
   );
 }
