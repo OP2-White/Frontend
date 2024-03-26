@@ -17,6 +17,11 @@ function CreateProduct() {
     { name: "carbs", label: "Carbs", type: "number"},
     { name: "fat", label: "Fat" , type: "number"},
     { name: "sugar", label: "Sugar" , type: "number"},
+    { name: "foodName", label: "Name" },
+    { name: "calories", label: "Calories" },
+    { name: "protein", label: "Protein" },
+    { name: "carbs", label: "Carbs" },
+    { name: "fat", label: "Fat" },
   ];
 
   const renderFields = () => {

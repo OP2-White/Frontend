@@ -1,20 +1,29 @@
-html,
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+html, body {
   overflow: hidden;
   padding: 0;
   margin: 0;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  font-family: "Roboto", sans-serif;
 }
 
 .navigation {
-  background-color: #2e2e2e;
+  background-color: #000000;
   width: 100vw;
   height: 8vh;
   display: flex;
   align-items: center;
-  font-size: 20;
+  font-size: 20px; /* Korjattu font-size yksikkö */
+  justify-content: center;
+}
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .navigationLink {
@@ -23,11 +32,12 @@ body {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: "Roboto", sans-serif;
+  background-color: #000000;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 .navigationLink:hover {
   border-color: #646cff;
 }
@@ -36,10 +46,23 @@ body {
   background-color: #2e2e2e;
   color: white;
   width: 40vw;
-  margin-left: 5vw;
-  margin-top: 5vh;
+  margin: 5vh auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+.searchProductsContainer {
+justify-content: center;
+display: grid;
+margin-right: 700px;
+}
+.searchButton {
+  padding: 7px;
+  margin-top: 10px;
+  background-color: #101010;
+  margin-left: 5px;
 }

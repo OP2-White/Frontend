@@ -89,6 +89,8 @@ function CalculateConsumption() {
           <div key={index}>
             {item.name} - {item.serving_size_g}g serving size, {item.calories} calories, {item.protein_g}g protein, {item.carbohydrates_total_g}g carbs, {item.sugar_g}g sugar, {item.fat_total_g} fat
             <button style={{ border: 'none', background: 'none', cursor: 'pointer' }} onClick={() => deleteFood(index)}>  <FontAwesomeIcon icon={faCircleXmark} />  </button>
+            {item.name} - {item.serving_size_g}g Serving size, {item.calories} Calories, {item.protein_g}g Protein, {item.carbohydrates_total_g}g Carbs, {item.sugar_g}g Sugar
+            <button className="searchButton" style={{ border: 'none', background: 'none', cursor: 'pointer' }} onClick={() => deleteFood(index)}>  <FontAwesomeIcon icon={faCircleXmark} />  </button>
           </div>
           // button (npm install @fortawesome/free-solid-svg-icons)
 

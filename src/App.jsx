@@ -1,9 +1,10 @@
 import "./App.css";
 import { Link, Outlet } from "react-router-dom";
+import { AppBar, Toolbar } from '@mui/material';
+
 
 function App() {
   return (
-    <>
       <div className="homepage">
         <div className="navigation">
           <nav>
@@ -17,13 +18,12 @@ function App() {
               Estimated calorie consumption calculator
             </Link>
             <Link to={"foodconsumption"} className="navigationLink">
-              your total Calories
+              Your total Calories
             </Link>
           </nav>
         </div>
         <Outlet />
       </div>
-    </>
   );
 }
 

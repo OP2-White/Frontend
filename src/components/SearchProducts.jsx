@@ -38,21 +38,21 @@ export default function SearchProducts() {
             value={searchWord}
             onChange={(event) => handleInputChange(event)}
           />
-          <button onClick={() => search()}>search</button>
+          <button className="searchButton" onClick={() => search()}>Search</button>
         </div>
 
-        <p>name : {searchResult.name}</p>
-        <p>calories: {searchResult.calories}</p>
-        <p>serving_size_g: {searchResult.serving_size_g}</p>
-        <p>fat_total_g: {searchResult.fat_total_g}</p>
-        <p>fat_saturated_g: {searchResult.fat_saturated_g}</p>
-        <p>protein_g: {searchResult.protein_g}</p>
-        <p>sodium_mg: {searchResult.sodium_mg}</p>
-        <p>potassium_mg: {searchResult.potassium_mg}</p>
-        <p>cholesterol_mg: {searchResult.cholesterol_mg}</p>
-        <p>carbohydrates_total_g: {searchResult.carbohydrates_total_g}</p>
-        <p>fiber_g: {searchResult.fiber_g}</p>
-        <p>sugar_g: {searchResult.sugar_g}</p>
+        <p>Name : {searchResult.name}</p>
+        <p>Calories: {searchResult.calories}</p>
+        <p>Serving size_g: {searchResult.serving_size_g}</p>
+        <p>Fat total_g: {searchResult.fat_total_g}</p>
+        <p>Fat saturated_g: {searchResult.fat_saturated_g}</p>
+        <p>Protein_g: {searchResult.protein_g}</p>
+        <p>Sodium_mg: {searchResult.sodium_mg}</p>
+        <p>Potassium_mg: {searchResult.potassium_mg}</p>
+        <p>Cholesterol_mg: {searchResult.cholesterol_mg}</p>
+        <p>Carbohydrates total_g: {searchResult.carbohydrates_total_g}</p>
+        <p>Fiber_g: {searchResult.fiber_g}</p>
+        <p>Sugar_g: {searchResult.sugar_g}</p>
       </div>
     </>
   );
