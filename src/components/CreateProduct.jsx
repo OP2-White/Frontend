@@ -7,14 +7,16 @@ function CreateProduct() {
     protein: null,
     carbs: null,
     fat: null,
+    sugar: null,
   });
 
   const fields = [
     { name: "foodName", label: "Name", type: "text"},
     { name: "calories", label: "Calories", type: "number" },
-    { name: "protein", label: "protein", type: "number" },
-    { name: "carbs", label: "carbs", type: "number"},
-    { name: "fat", label: "fat" , type: "number"},
+    { name: "protein", label: "Protein", type: "number" },
+    { name: "carbs", label: "Carbs", type: "number"},
+    { name: "fat", label: "Fat" , type: "number"},
+    { name: "sugar", label: "Sugar" , type: "number"},
   ];
 
   const renderFields = () => {
@@ -66,6 +68,7 @@ function CreateProduct() {
         protein: "",
         carbs: "",
         fat: "",
+        sugar: "",
       });
 
     } catch (error) {
