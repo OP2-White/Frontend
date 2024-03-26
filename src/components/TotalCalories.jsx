@@ -12,6 +12,7 @@ function CalculateConsumption() {
   const [totalProteins, setTotalProteins] =useState(0);
   const [totalCarbs, setTotalCarbs] =useState(0);
   const [totalSugar, setTotalSugar]=useState(0);
+  const [totalFat, setTotalFat]=useState(0);
 
   const handleInputChange = (event) => {
     setSearchWord(event.target.value);
@@ -34,6 +35,7 @@ function CalculateConsumption() {
           setTotalCarbs((currentTotal) => currentTotal + newFoodItem.carbohydrates_total_g);
           setTotalSugar((currentTotal) => currentTotal + newFoodItem.sugar_g);
           setTotalSize((currentTotal) => currentTotal + newFoodItem.serving_size_g);
+          setTotalFat((currentTotal) => currentTotal + newFoodItem.fat_total_g);
           
         }
       })
@@ -50,14 +52,15 @@ function CalculateConsumption() {
     setTotalCarbs((currentTotal) => currentTotal - itemToDelete.carbohydrates_total_g);
     setTotalSugar((currentTotal) => currentTotal - itemToDelete.sugar_g);
     setTotalSize((currentTotal) => currentTotal - itemToDelete.serving_size_g);
+    setTotalFat((currentTotal) => currentTotal - itemToDelete.fat_total_g);
   };
   // creates circle diagram (npm install chart.js react-chartjs-2)
   const chartData = {
-    labels: ['Calories', 'Protein', 'Carbs', 'Sugar'],
+    labels: ['Calories', 'Protein', 'Carbs', 'Sugar','Fat'],
     datasets: [
       {
         label: 'Nutrition',
-        data: [totalCalories, totalProteins, totalCarbs, totalSugar],
+        data: [totalCalories, totalProteins, totalCarbs, totalSugar, totalFat],
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',
           'rgba(54, 162, 235, 0.6)',
@@ -84,7 +87,7 @@ function CalculateConsumption() {
       <div>
         {foodItems.map((item, index) => (
           <div key={index}>
-            {item.name} - {item.serving_size_g}g serving size, {item.calories} calories, {item.protein_g}g protein, {item.carbohydrates_total_g}g carbs, {item.sugar_g}g sugar
+            {item.name} - {item.serving_size_g}g serving size, {item.calories} calories, {item.protein_g}g protein, {item.carbohydrates_total_g}g carbs, {item.sugar_g}g sugar, {item.fat_total_g} fat
             <button style={{ border: 'none', background: 'none', cursor: 'pointer' }} onClick={() => deleteFood(index)}>  <FontAwesomeIcon icon={faCircleXmark} />  </button>
           </div>
           // button (npm install @fortawesome/free-solid-svg-icons)
@@ -96,6 +99,7 @@ function CalculateConsumption() {
       <div>Total Protein: {totalProteins}g</div>
       <div>Total Carbs: {totalCarbs}g</div>
       <div>Total Sugar: {totalSugar}g</div>
+      <div>Total Fat: {totalFat}g</div>
       <div style={{ width: '300px', height: '300px' }}>
       <Doughnut data={chartData} />
     </div>

@@ -10,11 +10,11 @@ function CreateProduct() {
   });
 
   const fields = [
-    { name: "foodName", label: "Name" },
-    { name: "calories", label: "Calories" },
-    { name: "protein", label: "protein" },
-    { name: "carbs", label: "carbs" },
-    { name: "fat", label: "fat" },
+    { name: "foodName", label: "Name", type: "text"},
+    { name: "calories", label: "Calories", type: "number" },
+    { name: "protein", label: "protein", type: "number" },
+    { name: "carbs", label: "carbs", type: "number"},
+    { name: "fat", label: "fat" , type: "number"},
   ];
 
   const renderFields = () => {
@@ -23,7 +23,7 @@ function CreateProduct() {
         <label>
           {field.label}:
           <input
-            type="text"
+            type={field.type}
             name={field.name}
             value={newProduct[field.name]}
             onChange={handleChange}
