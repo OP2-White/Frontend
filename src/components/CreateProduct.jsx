@@ -11,12 +11,9 @@ function CreateProduct() {
   });
 
   //Lista jota käytetään tietokannan näyttämisessä.
-<<<<<<< HEAD
+
   const [foodList, setFoodList] = useState([]);
-=======
-  const [foodList, setFoodList] = useState([])
-  const [refreshList, setRefreshList] = useState(false)
->>>>>>> b20e574b2e3d1462c5585cc519c23c19c2a171c2
+  const [refreshList, setRefreshList] = useState(false);
 
   const fields = [
     { name: "foodName", label: "Name", type: "text" },
@@ -100,11 +97,7 @@ function CreateProduct() {
       }
     };
     fetchFoodList();
-<<<<<<< HEAD
-  }, [foodList]);
-=======
-  }, [refreshList])
->>>>>>> b20e574b2e3d1462c5585cc519c23c19c2a171c2
+  }, [refreshList]);
 
   return (
     <div className="create-product">
