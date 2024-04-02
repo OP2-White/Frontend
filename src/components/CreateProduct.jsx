@@ -11,15 +11,15 @@ function CreateProduct() {
   });
 
   //Lista jota käytetään tietokannan näyttämisessä.
-  const [foodList, setFoodList] = useState([])
+  const [foodList, setFoodList] = useState([]);
 
   const fields = [
-    { name: "foodName", label: "Name", type: "text"},
+    { name: "foodName", label: "Name", type: "text" },
     { name: "calories", label: "Calories", type: "number" },
     { name: "protein", label: "Protein", type: "number" },
-    { name: "carbs", label: "Carbs", type: "number"},
-    { name: "fat", label: "Fat" , type: "number"},
-    { name: "sugar", label: "Sugar" , type: "number"},
+    { name: "carbs", label: "Carbs", type: "number" },
+    { name: "fat", label: "Fat", type: "number" },
+    { name: "sugar", label: "Sugar", type: "number" },
   ];
 
   const renderFields = () => {
@@ -38,9 +38,6 @@ function CreateProduct() {
       </div>
     ));
   };
-
-
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -76,14 +73,13 @@ function CreateProduct() {
         fat: "",
         sugar: "",
       });
-
     } catch (error) {
       console.error("Tallennusvirhe:", error.message);
     }
   };
 
   useEffect(() => {
-    const fetchFoodList = async() => {
+    const fetchFoodList = async () => {
       try {
         const response = await fetch(
           "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodListREST"
@@ -98,18 +94,17 @@ function CreateProduct() {
       }
     };
     fetchFoodList();
-  }, [foodList])
+  }, [foodList]);
 
   return (
     <div className="create-product">
-
-    <div className="createProductContainer">
+      <div className="createProductContainer">
         <p>Create new product:</p>
         <form>{renderFields()}</form>
         <button onClick={() => saveToDatabase()}>Save</button>
       </div>
       <div className="list-product">
-      <p>Previously created:</p>
+        <p>Previously created:</p>
         <ul>
           {foodList.map((food, index) => (
             <li key={index}>
@@ -117,7 +112,7 @@ function CreateProduct() {
             </li>
           ))}
         </ul>
-        </div>
+      </div>
     </div>
   );
 }
