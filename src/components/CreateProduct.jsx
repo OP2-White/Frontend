@@ -12,6 +12,7 @@ function CreateProduct() {
 
   //Lista jota käytetään tietokannan näyttämisessä.
   const [foodList, setFoodList] = useState([])
+  const [refreshList, setRefreshList] = useState(false)
 
   const fields = [
     { name: "foodName", label: "Name", type: "text"},
@@ -68,6 +69,7 @@ function CreateProduct() {
       }
 
       console.log("Data saved successfully");
+      setRefreshList(!refreshList);
       setNewProduct({
         foodName: "",
         calories: "",
@@ -98,7 +100,7 @@ function CreateProduct() {
       }
     };
     fetchFoodList();
-  }, [foodList])
+  }, [refreshList])
 
   return (
     <div className="create-product">
