@@ -11,7 +11,12 @@ function CreateProduct() {
   });
 
   //Lista jota käytetään tietokannan näyttämisessä.
+<<<<<<< HEAD
   const [foodList, setFoodList] = useState([]);
+=======
+  const [foodList, setFoodList] = useState([])
+  const [refreshList, setRefreshList] = useState(false)
+>>>>>>> b20e574b2e3d1462c5585cc519c23c19c2a171c2
 
   const fields = [
     { name: "foodName", label: "Name", type: "text" },
@@ -65,6 +70,7 @@ function CreateProduct() {
       }
 
       console.log("Data saved successfully");
+      setRefreshList(!refreshList);
       setNewProduct({
         foodName: "",
         calories: "",
@@ -94,7 +100,11 @@ function CreateProduct() {
       }
     };
     fetchFoodList();
+<<<<<<< HEAD
   }, [foodList]);
+=======
+  }, [refreshList])
+>>>>>>> b20e574b2e3d1462c5585cc519c23c19c2a171c2
 
   return (
     <div className="create-product">
