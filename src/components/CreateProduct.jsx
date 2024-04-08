@@ -112,6 +112,7 @@ function CreateProduct() {
           {foodList.map((food, index) => (
             <li key={index}>
               {food.foodName} - {food.calories} calories
+              <button className="eat">Eat</button>
             </li>
           ))}
         </ul>

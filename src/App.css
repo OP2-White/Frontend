@@ -2,13 +2,15 @@
 
 html,
 body {
-  overflow: hidden;
   padding: 0;
   margin: 0;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   font-family: "Roboto", sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+
 }
 
 .navigation {
@@ -53,6 +55,7 @@ body {
   background-color: #2e2e2e;
   color: white;
   width: 40vw;
+  height: 50vh;
   margin: 5vh auto;
   padding: 20px;
   border-radius: 10px;
@@ -60,6 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 
 .createProductContainer {
@@ -85,4 +89,8 @@ body {
   margin-top: 10px;
   background-color: #101010;
   margin-left: 5px;
+}
+
+.eat{
+  height: 10;
 }
