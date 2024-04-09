@@ -7,6 +7,8 @@ import "./index.css";
 import CalorieCalculator from "./components/CalculateYourConsumption.jsx";
 import SearchProducts from "./components/SearchProducts.jsx";
 import CalculateConsumption from "./components/TotalCalories.jsx";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "foodconsumption",
         element: <CalculateConsumption />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
       },
     ],
   },
