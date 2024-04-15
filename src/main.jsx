@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import App from "./App.jsx";
 import CreateProduct from "./components/CreateProduct.jsx";
 import "./index.css";
@@ -10,7 +10,7 @@ import CalculateConsumption from "./components/TotalCalories.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
