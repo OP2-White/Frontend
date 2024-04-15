@@ -19,6 +19,11 @@ function CalculateConsumption() {
   const [carbs, setCarbs] = useState(0);
   const [fat, setFat] = useState(0);
   const [sugar, setSugar] = useState(0);
+  const [appUser, setAppUser] = useState({
+    userId: 1,
+    username: "moi",
+    passwordHash: "moi",
+  });
   const [foodToSave, setFoodToSave] = useState({
     date: formattedCurrentDate,
     foodName: "",
@@ -34,7 +39,7 @@ function CalculateConsumption() {
     setSearchWord(event.target.value);
   };
 
-  //tallennettujen ruokien tallennus kantaan. Sitten tallennettujen ruokien haku ja suodatus päivän mukaan ja lasketaan päivän totaali kalorit donitsiin. 
+  //tallennettujen ruokien tallennus kantaan. Sitten tallennettujen ruokien haku ja suodatus päivän mukaan ja lasketaan päivän totaali kalorit donitsiin.
 
   const searchFood = () => {
     fetch(`https://api.calorieninjas.com/v1/nutrition?query=${searchWord}`, {
@@ -133,17 +138,32 @@ function CalculateConsumption() {
   //     },
   //   ],
   // };
-
+  //ei saa tallennettua dataa backendiin. ongelma appuser oliossa joko täälä tai backissä
   const saveToDatabase = async () => {
+    console.log(foodToSave); // Check if foodToSave is defined
+    console.log(appUser);
+
+    const requestBody = {
+      date: foodToSave.date,
+      foodName: foodToSave.foodName,
+      calories: foodToSave.calories,
+      protein: foodToSave.protein,
+      carbs: foodToSave.carbs,
+      fat: foodToSave.fat,
+      sugar: foodToSave.sugar,
+      appUser: appUser,
+    };
+
     try {
       const response = await fetch(
         "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/saveFoodEatenREST",
         {
           method: "POST",
           headers: {
+            // Set the Content-Type header to application/json
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(foodToSave),
+          body: JSON.stringify(requestBody), // Convert the request body to JSON
         }
       );
 
