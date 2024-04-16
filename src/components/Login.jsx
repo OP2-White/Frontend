@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -10,18 +10,17 @@ function Login() {
     passwordHash: "",
   });
   //tätä voidaan käyttää jos tarvii saada toiminnallisuutta jolla tarkistetaan onko aikaisemmin kirjauduttu sisään.
-  //   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
-  //   useEffect(() => {
-  //     if (isLoggedIn) {
-  //       navigate("/profile");
-  //     }
-  //   }, []);
+    useEffect(() => {
+      if (isLoggedIn) {
+        navigate("/SearchProducts");
+      }
+    }, []);
 
   const handleInputChange = (event) => {
     setLoginData({ ...loginData, [event.target.name]: event.target.value });
   };
-
   const handleLogin = () => {
     fetch(
       "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/checkLoginRequest",
@@ -32,7 +31,8 @@ function Login() {
         },
         body: JSON.stringify(loginData),
       }
-    )
+      
+  )
       .then((response) => {
         if (!response.ok) {
           if (response.status === 401) {
@@ -53,7 +53,7 @@ function Login() {
       })
       .catch((error) => {
         console.error("Error:", error);
-      });
+      });  
   };
 
   return (
