@@ -20,27 +20,27 @@ const router = createHashRouter([
         index: true,
       },
       {
-        path: "search-products",
+        path: "/search-products",
         element: <SearchProducts />,
       },
       {
-        path: "create-product",
+        path: "/create-product",
         element: <CreateProduct />,
       },
       {
-        path: "calorieconsumption",
+        path: "/calorieconsumption",
         element: <CalorieCalculator />,
       },
       {
-        path: "foodconsumption",
+        path: "/foodconsumption",
         element: <CalculateConsumption />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <Signup />,
       },
     ],
