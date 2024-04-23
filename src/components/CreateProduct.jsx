@@ -150,6 +150,9 @@ function CreateProduct() {
       }
 
       console.log("Data saved successfully");
+
+      // Alert user, that food is added to eaten products list
+      alert(`Succesfully added ${food.foodName} as eaten.`);
     } catch (error) {
       console.error("Tallennusvirhe:", error.message);
     }
