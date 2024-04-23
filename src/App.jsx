@@ -9,6 +9,12 @@ import TotalCalories from "./components/TotalCalories";
 import isLoggedIn from "./components/Login"
 
 function App() {
+  const handleLogout = () => {
+    sessionStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+  const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn") === "true");
+
   return (
     <div className="homepage">
       <div className="navigation">
@@ -18,20 +24,23 @@ function App() {
           </Link>
           {isLoggedIn && (
             <>
-              <Link to={"create-product"} className="navigationLink">
+              <Link to={"/create-product"} className="navigationLink">
                 Add food products
               </Link>
-              <Link to={"calorieconsumption"} className="navigationLink">
+              <Link to={"/calorieconsumption"} className="navigationLink">
                 Estimated calorie consumption calculator
               </Link>
-              <Link to={"foodconsumption"} className="navigationLink">
+              <Link to={"/foodconsumption"} className="navigationLink">
                 Your total Calories
               </Link>
+              <button onClick={handleLogout}>Logout</button>
             </>
           )}
-          <Link to={"login"} className="navigationLink">
-            Login
-          </Link>
+          {!isLoggedIn && (
+            <Link to={"/login"} className="navigationLink">
+              Login
+            </Link>
+            )}
         </nav>
       </div>
       <Outlet />

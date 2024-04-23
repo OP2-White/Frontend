@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import "../App.css";
-import { redirect, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 function Login() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // navigate-koukun käyttö
   const [loginData, setLoginData] = useState({
     username: "",
     passwordHash: "",
   });
-  //tätä voidaan käyttää jos tarvii saada toiminnallisuutta jolla tarkistetaan onko aikaisemmin kirjauduttu sisään.
-    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
-    useEffect(() => {
-      if (isLoggedIn) {
-        navigate("/SearchProducts");
-      }
-    }, []);
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if (isLoggedIn === "true") {
+      navigate("/search-products"); // Ohjaa käyttäjän SearchProducts-sivulle, jos hän on jo kirjautunut sisään
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     setLoginData({ ...loginData, [event.target.name]: event.target.value });
   };
+
   const handleLogin = () => {
     fetch(
       "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/checkLoginRequest",
@@ -31,8 +31,7 @@ function Login() {
         },
         body: JSON.stringify(loginData),
       }
-      
-  )
+    )
       .then((response) => {
         if (!response.ok) {
           if (response.status === 401) {
@@ -47,13 +46,14 @@ function Login() {
       .then((data) => {
         if (data) {
           console.log(data);
-          //   navigate("/profile", { state: { userData: data } });
-          //   sessionStorage.setItem("isLoggedIn", "true");
+          sessionStorage.setItem("isLoggedIn", "true");
+          navigate("/search-products"); // Ohjaa käyttäjän SearchProducts-sivulle kirjautumisen jälkeen
+          window.location.reload();
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-      });  
+      });
   };
 
   return (
@@ -96,4 +96,6 @@ function Login() {
     </div>
   );
 }
+
 export default Login;
+
