@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function CalorieCalculator() {
+
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("male");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [activityLevel, setActivityLevel] = useState("2");
   const [goal, setGoal] = useState("maintain");
+
   const [result, setResult] = useState(null);
 
   const fetchCalories = async () => {
@@ -34,9 +36,11 @@ function CalorieCalculator() {
       setResult(response.data);
     } catch (error) {
       console.error(error);
+      window.alert("Please ensure the weight is a number between 40 kg and 160 kg, and the height is a number between 130 cm and 230 cm.")
     }
   };
   return (
+
     <div className="calorieConsumptionContainer">
       <div className="inputfieldsContainer">
         <h3>Age</h3>
@@ -94,6 +98,7 @@ function CalorieCalculator() {
         </select>
         <button onClick={fetchCalories}>Calculate</button>
       </div>
+
       {result && (
         <div className="resultsContainer">
           <div className="resultsHeaderContainer">
