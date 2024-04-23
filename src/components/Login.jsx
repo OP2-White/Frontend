@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate(); // navigate-koukun käyttö
@@ -60,7 +60,7 @@ function Login() {
   return (
     <div className="loginpage">
       <div className="pleaselogin">
-        <h1>Login to your profile</h1>
+        <h1>Login to your profile to access all features</h1>
       </div>
       <div className="loginform">
         <div className="loginheader">
@@ -99,4 +99,3 @@ function Login() {
 }
 
 export default Login;
-

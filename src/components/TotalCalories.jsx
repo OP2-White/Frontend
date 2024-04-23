@@ -210,11 +210,11 @@ function CalculateConsumption() {
 
   return (
     <div className="totalCaloriesContainer">
-      <div>
+      <div className="totalCaloriesSearchContainer">
         <div>
           <h1>Add eaten foods</h1>
           <input value={searchWord} onChange={handleInputChange} />
-          <button onClick={() => searchFood()}>Search product</button>
+          <button onClick={() => searchFood()}>Search</button>
         </div>
         <div>
           {searchDone && (
@@ -241,25 +241,36 @@ function CalculateConsumption() {
       </div>
       {fetched && (
         <div className="totalsContainer">
-          <h2>Daily Totals</h2>
+          <h1>Daily Totals</h1>
           <div>
-            Total Calories:{" "}
-            {eatenFoods.reduce((total, food) => total + food.calories, 0)}
+            <h2>
+              Total Calories:{" "}
+              {eatenFoods.reduce((total, food) => total + food.calories, 0)}
+            </h2>
           </div>
           <div>
-            Total Protein:{" "}
-            {eatenFoods.reduce((total, food) => total + food.protein, 0)}
+            <h2>
+              Total Protein:{" "}
+              {eatenFoods.reduce((total, food) => total + food.protein, 0)}
+            </h2>
           </div>
           <div>
-            Total Carbs:{" "}
-            {eatenFoods.reduce((total, food) => total + food.carbs, 0)}
+            <h2>
+              Total Carbs:{" "}
+              {eatenFoods.reduce((total, food) => total + food.carbs, 0)}
+            </h2>
           </div>
           <div>
-            Total Fat: {eatenFoods.reduce((total, food) => total + food.fat, 0)}
+            <h2>
+              Total Fat:{" "}
+              {eatenFoods.reduce((total, food) => total + food.fat, 0)}
+            </h2>
           </div>
           <div>
-            Total Sugar:{" "}
-            {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
+            <h2>
+              Total Sugar:{" "}
+              {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
+            </h2>
           </div>
           <button onClick={()=>test()}>test </button>
         </div>
