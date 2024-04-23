@@ -46,6 +46,7 @@ function Login() {
       .then((data) => {
         if (data) {
           console.log(data);
+          sessionStorage.setItem("appUser", JSON.stringify(data));
           sessionStorage.setItem("isLoggedIn", "true");
           navigate("/search-products"); // Ohjaa käyttäjän SearchProducts-sivulle kirjautumisen jälkeen
           window.location.reload();

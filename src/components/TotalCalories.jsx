@@ -22,9 +22,9 @@ function CalculateConsumption() {
 
   // HUOM tähän pitäisi saada kirjautuneen käyttäjän tiedot jotta syöty ruoka tallentuu kirjautuneelle käyttäjälle.
   const [appUser, setAppUser] = useState({
-    userId: 1,
-    username: "moi",
-    passwordHash: "moi",
+    userId: null,
+    username: "",
+    passwordHash: "",
   });
   const [foodToSave, setFoodToSave] = useState({
     date: formattedCurrentDate,
@@ -41,6 +41,7 @@ function CalculateConsumption() {
   const [fetched, setFetched] = useState(false);
   //https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userID}
   useEffect(() => {
+    setAppUser(JSON.parse(sessionStorage.getItem("appUser")));
     let filteredArray = [];
     fetch(
       `https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userId}`,
@@ -56,6 +57,7 @@ function CalculateConsumption() {
           }
         });
         setEatenFoods(filteredArray);
+        console.log(appUser);
       });
 
     setFetched(true);
@@ -202,7 +204,8 @@ function CalculateConsumption() {
   };
 
   const test = () => {
-    console.log(eatenFoods);
+    console.log(appUser);
+
   };
 
   return (
@@ -258,6 +261,7 @@ function CalculateConsumption() {
             Total Sugar:{" "}
             {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
           </div>
+          <button onClick={()=>test()}>test </button>
         </div>
       )}
       {/* <div>Total Serving Size: {totalSize}g</div>

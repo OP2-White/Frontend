@@ -32,6 +32,8 @@ export default function SearchProducts() {
       .then((data) => setSearchResult(data.items[0]))
       .then((data) => setSearchComplete(true));
     console.log(searchResult);
+    let userInformation = JSON.parse(sessionStorage.getItem("appUser"));
+    alert(userInformation.passwordHash);
   };
   return (
     <>

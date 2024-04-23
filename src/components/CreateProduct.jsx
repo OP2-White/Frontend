@@ -16,9 +16,9 @@ function CreateProduct() {
   });
   // HUOM tähän pitäisi saada kirjautuneen käyttäjän tiedot jotta syöty ruoka tallentuu kirjautuneelle käyttäjälle.
   const [appUser, setAppUser] = useState({
-    userId: 1,
-    username: "moi",
-    passwordHash: "moi",
+    userId: null,
+    username: "",
+    passwordHash: "",
   });
   const [foodToSave, setFoodToSave] = useState({
     date: formattedCurrentDate,
@@ -102,6 +102,7 @@ function CreateProduct() {
   };
 
   useEffect(() => {
+    setAppUser(JSON.parse(sessionStorage.getItem("appUser")));
     const fetchFoodList = async () => {
       try {
         const response = await fetch(
