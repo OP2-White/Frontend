@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +19,8 @@ function CalculateConsumption() {
   const [carbs, setCarbs] = useState(0);
   const [fat, setFat] = useState(0);
   const [sugar, setSugar] = useState(0);
+
+  // HUOM tähän pitäisi saada kirjautuneen käyttäjän tiedot jotta syöty ruoka tallentuu kirjautuneelle käyttäjälle.
   const [appUser, setAppUser] = useState({
     userId: 1,
     username: "moi",
@@ -34,12 +36,34 @@ function CalculateConsumption() {
     sugar: 0,
   });
   const [searchDone, setSearchDone] = useState(false);
+  const [rerenderer, setRerenderer] = useState(false);
+  const [eatenFoods, setEatenFoods] = useState([]);
+  const [fetched, setFetched] = useState(false);
+  //https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userID}
+  useEffect(() => {
+    let filteredArray = [];
+    fetch(
+      `https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userId}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((item) => {
+          if (item.date === formattedCurrentDate) {
+            filteredArray.push(item);
+          }
+        });
+        setEatenFoods(filteredArray);
+      });
+
+    setFetched(true);
+  }, [rerenderer]);
 
   const handleInputChange = (event) => {
     setSearchWord(event.target.value);
   };
-
-  //tallennettujen ruokien tallennus kantaan. Sitten tallennettujen ruokien haku ja suodatus päivän mukaan ja lasketaan päivän totaali kalorit donitsiin.
 
   const searchFood = () => {
     fetch(`https://api.calorieninjas.com/v1/nutrition?query=${searchWord}`, {
@@ -170,40 +194,72 @@ function CalculateConsumption() {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
+      setRerenderer(!rerenderer);
       console.log("Data saved successfully");
     } catch (error) {
       console.error("Tallennusvirhe:", error.message);
     }
   };
 
+  const test = () => {
+    console.log(eatenFoods);
+  };
+
   return (
-    <>
+    <div className="totalCaloriesContainer">
       <div>
-        <h1>Add eaten foods</h1>
-        <input value={searchWord} onChange={handleInputChange} />
-        <button onClick={() => searchFood()}>Search product</button>
+        <div>
+          <h1>Add eaten foods</h1>
+          <input value={searchWord} onChange={handleInputChange} />
+          <button onClick={() => searchFood()}>Search product</button>
+        </div>
+        <div>
+          {searchDone && (
+            <div>
+              <h4>
+                {totalSize} g of {foodName} has
+              </h4>
+
+              <h4>{calories} kcal</h4>
+              <h4>{protein}g protein</h4>
+              <h4>{carbs}g carbs</h4>
+              <h4>{fat}g fat</h4>
+              <h4>{sugar}g sugar</h4>
+              <button
+                onClick={() => {
+                  saveToDatabase();
+                }}
+              >
+                Save as eaten
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-      <div>
-        {searchDone && (
+      {fetched && (
+        <div className="totalsContainer">
+          <h2>Daily Totals</h2>
           <div>
-            <h4>Name: {foodName}</h4>
-            <h4>Portion size: {totalSize} g</h4>
-            <h4>Calories: {calories}</h4>
-            <h4>Protein: {protein}</h4>
-            <h4>Carbs: {carbs}</h4>
-            <h4>Fat: {fat}</h4>
-            <h4>Sugar: {sugar}</h4>
-            <button
-              onClick={() => {
-                saveToDatabase();
-              }}
-            >
-              Save as eaten
-            </button>
+            Total Calories:{" "}
+            {eatenFoods.reduce((total, food) => total + food.calories, 0)}
           </div>
-        )}
-      </div>
+          <div>
+            Total Protein:{" "}
+            {eatenFoods.reduce((total, food) => total + food.protein, 0)}
+          </div>
+          <div>
+            Total Carbs:{" "}
+            {eatenFoods.reduce((total, food) => total + food.carbs, 0)}
+          </div>
+          <div>
+            Total Fat: {eatenFoods.reduce((total, food) => total + food.fat, 0)}
+          </div>
+          <div>
+            Total Sugar:{" "}
+            {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
+          </div>
+        </div>
+      )}
       {/* <div>Total Serving Size: {totalSize}g</div>
       <div>Total Calories: {totalCalories}</div>
       <div>Total Protein: {totalProteins}g</div>
@@ -212,7 +268,7 @@ function CalculateConsumption() {
       {/* <div style={{ width: "300px", height: "300px" }}>
         <Doughnut data={chartData} />
       </div> */}
-    </>
+    </div>
   );
 }
 export default CalculateConsumption;

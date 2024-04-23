@@ -1,13 +1,33 @@
 import { useEffect, useState } from "react";
 
+let currentDate = new Date();
+let formattedCurrentDate = `${currentDate.getDate()}.${
+  currentDate.getMonth() + 1
+}.${currentDate.getFullYear()}`;
+
 function CreateProduct() {
   const [newProduct, setNewProduct] = useState({
     foodName: "",
-    calories: null,
-    protein: null,
-    carbs: null,
-    fat: null,
-    sugar: null,
+    calories: "",
+    protein: "",
+    carbs: "",
+    fat: "",
+    sugar: "",
+  });
+  // HUOM tähän pitäisi saada kirjautuneen käyttäjän tiedot jotta syöty ruoka tallentuu kirjautuneelle käyttäjälle.
+  const [appUser, setAppUser] = useState({
+    userId: 1,
+    username: "moi",
+    passwordHash: "moi",
+  });
+  const [foodToSave, setFoodToSave] = useState({
+    date: formattedCurrentDate,
+    foodName: "",
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+    sugar: 0,
   });
 
   //Lista jota käytetään tietokannan näyttämisessä.
@@ -48,7 +68,7 @@ function CreateProduct() {
       [name]: value,
     }));
   };
-  // pitää kattoo heroku postgre sql juttuja. ei toimi ku tulee error 500
+
   const saveToDatabase = async () => {
     try {
       const response = await fetch(
@@ -99,6 +119,42 @@ function CreateProduct() {
     fetchFoodList();
   }, [refreshList]);
 
+  const saveEatenToDatabase = async (food) => {
+    console.log(food);
+    const requestBody = {
+      date: formattedCurrentDate,
+      foodName: food.foodName,
+      calories: food.calories,
+      protein: food.protein,
+      carbs: food.carbs,
+      fat: food.fat,
+      sugar: food.sugar,
+      appUser: appUser,
+    };
+
+    try {
+      const response = await fetch(
+        "https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/saveFoodEatenREST",
+        {
+          method: "POST",
+          headers: {
+            // Set the Content-Type header to application/json
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody), // Convert the request body to JSON
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      console.log("Data saved successfully");
+    } catch (error) {
+      console.error("Tallennusvirhe:", error.message);
+    }
+  };
+
   return (
     <div className="create-product">
       <div className="createProductContainer">
@@ -112,7 +168,14 @@ function CreateProduct() {
           {foodList.map((food, index) => (
             <li key={index}>
               {food.foodName} - {food.calories} calories
-              <button className="eat">Eat</button>
+              <button
+                className="eat"
+                onClick={() => {
+                  saveEatenToDatabase(food);
+                }}
+              >
+                Eat
+              </button>
             </li>
           ))}
         </ul>

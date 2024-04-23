@@ -6,6 +6,7 @@ export default function SearchProducts() {
 
   const [searchResult, setSearchResult] = useState({});
   const [searchWord, setSearchWord] = useState("");
+  const [searchComplete, setSearchComplete] = useState(false);
 
   // useEffect(() => {
   //   fetch("https://api.calorieninjas.com/v1/nutrition?query=banana", {
@@ -28,37 +29,44 @@ export default function SearchProducts() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setSearchResult(data.items[0]));
+      .then((data) => setSearchResult(data.items[0]))
+      .then((data) => setSearchComplete(true));
     console.log(searchResult);
   };
   return (
     <>
       <div className="searchProductsContainer">
-        <div className="searchSideContainer">
-          <div>
-            <input
-              value={searchWord}
-              onChange={(event) => handleInputChange(event)}
-            />
-            <button onClick={() => search()}>search</button>
+        <h1>Search foods</h1>
+        <div className="searchBarContainer">
+          <input
+            value={searchWord}
+            onChange={(event) => handleInputChange(event)}
+          />
+          <button
+            className="searchProductsSearchButton"
+            onClick={() => search()}
+          >
+            search
+          </button>
+        </div>
+        {searchComplete && (
+          <div className="searchResultsContainer">
+            <div className="searchResultsLeftSide">
+              <p>Amount: {searchResult.serving_size_g} g</p>
+              <p>Calories: {searchResult.calories} kcal</p>
+              <p>Total fat: {searchResult.fat_total_g} g</p>
+              <p>Saturated fat: {searchResult.fat_saturated_g} g</p>
+              <p>Protein: {searchResult.protein_g} g</p>
+            </div>
+            <div className="searchResultsRightSide">
+              <p>Potassium: {searchResult.potassium_mg} mg</p>
+              <p>Cholesterol: {searchResult.cholesterol_mg} mg</p>
+              <p>Carbohydrates: {searchResult.carbohydrates_total_g} g</p>
+              <p>Fiber: {searchResult.fiber_g} g</p>
+              <p>Sugar: {searchResult.sugar_g} g</p>
+            </div>
           </div>
-
-          <p>name : {searchResult.name}</p>
-          <p>calories: {searchResult.calories}</p>
-          <p>serving_size_g: {searchResult.serving_size_g}</p>
-          <p>fat_total_g: {searchResult.fat_total_g}</p>
-          <p>fat_saturated_g: {searchResult.fat_saturated_g}</p>
-          <p>protein_g: {searchResult.protein_g}</p>
-          <p>sodium_mg: {searchResult.sodium_mg}</p>
-          <p>potassium_mg: {searchResult.potassium_mg}</p>
-          <p>cholesterol_mg: {searchResult.cholesterol_mg}</p>
-          <p>carbohydrates_total_g: {searchResult.carbohydrates_total_g}</p>
-          <p>fiber_g: {searchResult.fiber_g}</p>
-          <p>sugar_g: {searchResult.sugar_g}</p>
-        </div>
-        <div className="totalCaloriesSideContainer">
-          <CalculateConsumption />
-        </div>
+        )}
       </div>
     </>
   );

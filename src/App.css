@@ -6,11 +6,10 @@ body {
   margin: 0;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1c1b1d;
   font-family: "Roboto", sans-serif;
   height: 100vh;
   overflow-x: hidden;
-
 }
 
 .navigation {
@@ -80,9 +79,22 @@ body {
 }
 
 .searchProductsContainer {
-  justify-content: space-around;
-  display: flex;
   align-items: center;
+  background-color: #212124;
+  height: 64vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8vh;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+}
+.searchProductsContainer h1 {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .searchButton {
   padding: 7px;
@@ -91,6 +103,156 @@ body {
   margin-left: 5px;
 }
 
-.eat{
+.eat {
   height: 10;
+}
+.eatenFoodsContainer {
+  height: 40vh;
+}
+.searchResultsContainer {
+  display: flex;
+  flex-direction: row;
+
+  width: 50vw;
+  height: 80%;
+  justify-content: space-around;
+}
+.searchResultsRightSide,
+.searchResultsLeftSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.searchResultsLeftSide p,
+.searchResultsRightSide p {
+  font-size: 18px;
+  font-weight: 600;
+}
+.searchBarContainer {
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+}
+.searchBarContainer input {
+  height: 75%;
+  font-size: 20px;
+  width: 300px;
+}
+.searchProductsSearchButton {
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+}
+.calorieConsumptionContainer {
+  width: 100vw;
+
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+}
+.inputfieldsContainer {
+  background-color: #212124;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 400px;
+  justify-content: center;
+  padding: 30px;
+  margin-top: 3%;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+.inputfieldsContainer input,
+.inputfieldsContainer select {
+  height: 40px;
+  font-size: 20px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inputfieldsContainer h3 {
+  margin: 0;
+  padding: 5px;
+  margin-left: 12%;
+  font-size: 23px;
+}
+.inputfieldsContainer button {
+  height: 40px;
+  width: 300px;
+  margin: 0;
+  padding: 10px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 80%;
+  background-color: #212124;
+  margin-top: 3%;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+  justify-content: center;
+}
+.resultsHeaderContainer h2 {
+  font-size: 26px;
+  margin-top: 0;
+}
+.resultsDietHeaderContainer h2 {
+  margin: 0;
+}
+.resultsBalancedDietContainer,
+.resultsLowFatDietContainer,
+.resultsLowCarbDietContainer,
+.resultsHighProteinDietContainer {
+  background-color: rgb(40, 40, 41);
+  width: 30%;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+.resultsBalancedDietContainer,
+.resultsLowCarbDietContainer {
+  margin-left: 17%;
+}
+
+.resultsLowFatDietContainer,
+.resultsHighProteinDietContainer {
+  margin-right: 17%;
+}
+
+.resultsBalancedDietContainer h4,
+.resultsLowFatDietContainer h4,
+.resultsLowCarbDietContainer h4,
+.resultsHighProteinDietContainer h4 {
+  margin-left: 25%;
+}
+.resultsBalancedDietContainer h5,
+.resultsLowFatDietContainer h5,
+.resultsLowCarbDietContainer h5,
+.resultsHighProteinDietContainer h5 {
+  margin-left: 10%;
+}
+
+.resultsDietHeaderContainer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resultsDietsLowerContainer,
+.resultsDietsUpperContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*TOTAL CALORIES PAGE*/
+
+.totalCaloriesContainer {
+  display: flex;
 }
