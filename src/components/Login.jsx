@@ -10,13 +10,13 @@ function Login() {
     passwordHash: "",
   });
   //tätä voidaan käyttää jos tarvii saada toiminnallisuutta jolla tarkistetaan onko aikaisemmin kirjauduttu sisään.
-    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
-    useEffect(() => {
-      if (isLoggedIn) {
-        navigate("/SearchProducts");
-      }
-    }, []);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/SearchProducts");
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     setLoginData({ ...loginData, [event.target.name]: event.target.value });
@@ -31,8 +31,7 @@ function Login() {
         },
         body: JSON.stringify(loginData),
       }
-      
-  )
+    )
       .then((response) => {
         if (!response.ok) {
           if (response.status === 401) {
@@ -53,13 +52,13 @@ function Login() {
       })
       .catch((error) => {
         console.error("Error:", error);
-      });  
+      });
   };
 
   return (
     <div className="loginpage">
       <div className="pleaselogin">
-        <h1>Login to your profile</h1>
+        <h1>Login to your profile to access all features</h1>
       </div>
       <div className="loginform">
         <div className="loginheader">
