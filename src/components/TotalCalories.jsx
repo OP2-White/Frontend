@@ -272,7 +272,7 @@ function CalculateConsumption() {
               {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
             </h2>
           </div>
-          <button onClick={()=>test()}>test </button>
+          <button onClick={()=>test()}>Test </button>
         </div>
       )}
       {/* <div>Total Serving Size: {totalSize}g</div>
