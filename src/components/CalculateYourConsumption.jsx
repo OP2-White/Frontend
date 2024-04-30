@@ -78,11 +78,11 @@ function CalorieCalculator() {
         >
           <option value="1"> BMR</option>
           <option value="2"> Little or no exercise</option>
-          <option value="3"> 1-3 times/week</option>
-          <option value="4"> 4-5 time/week</option>
-          <option value="5"> daily</option>
-          <option value="6"> intense</option>
-          <option value="7"> very intence</option>
+          <option value="3"> 1-3 Times/week</option>
+          <option value="4"> 4-5 Times/week</option>
+          <option value="5"> Daily</option>
+          <option value="6"> Intense</option>
+          <option value="7"> Very intense</option>
         </select>
         <h3>Goal</h3>
         <select
@@ -90,11 +90,11 @@ function CalorieCalculator() {
           onChange={(e) => setGoal(e.target.value)}
           placeholder="Goal"
         >
-          <option value="maintain"> BMR</option>
-          <option value="mildlose"> mildlose</option>
-          <option value="weightlose"> weightlose</option>
-          <option value="extremelose"> extremelose</option>
-          <option value="mildgain"> mildgain</option>
+          <option value="maintain"> Maintain </option>
+          <option value="mildlose"> Mild weight loss</option>
+          <option value="weightlose"> Weight loss</option>
+          <option value="extremelose"> Extreme weight loss</option>
+          <option value="mildgain"> Mild weight gain</option>
         </select>
         <button onClick={fetchCalories}>Calculate</button>
       </div>

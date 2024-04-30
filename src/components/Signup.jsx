@@ -31,6 +31,7 @@ function Signup() {
         //   navigate("/profile", { state: { userData: data } });
         //   sessionStorage.setItem("isLoggedIn", "true");
         // }
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error:", error);
