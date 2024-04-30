@@ -42,9 +42,11 @@ function CalculateConsumption() {
   //https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userID}
   useEffect(() => {
     setAppUser(JSON.parse(sessionStorage.getItem("appUser")));
+    let usersData = JSON.parse(sessionStorage.getItem("appUser"));
+    console.log(sessionStorage.getItem("appUser"));
     let filteredArray = [];
     fetch(
-      `https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${appUser.userId}`,
+      `https://calorie-calculator-backend-c99d1a21f171.herokuapp.com/foodEaten/users/${usersData.userId}`,
       {
         method: "GET",
       }
@@ -97,74 +99,6 @@ function CalculateConsumption() {
       });
   };
 
-  // const addFood = () => {
-  //   fetch(`https://api.calorieninjas.com/v1/nutrition?query=${searchWord}`, {
-  //     headers: {
-  //       "X-Api-Key": "1NCL2QnaNfKPnwFzFlWyGQ==rtw2xVObNjB0h2tS",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.items && data.items.length > 0) {
-  //         const newFoodItem = data.items[0];
-  //         setFoodItems((currentItems) => [...currentItems, newFoodItem]);
-  //         // Update total calories
-  //         setTotalCalories(
-  //           (currentTotal) => currentTotal + newFoodItem.calories
-  //         );
-  //         setTotalProteins(
-  //           (currentTotal) => currentTotal + newFoodItem.protein_g
-  //         );
-  //         setTotalCarbs(
-  //           (currentTotal) => currentTotal + newFoodItem.carbohydrates_total_g
-  //         );
-  //         setTotalSugar((currentTotal) => currentTotal + newFoodItem.sugar_g);
-  //         setTotalSize(
-  //           (currentTotal) => currentTotal + newFoodItem.serving_size_g
-  //         );
-  //       }
-  //     })
-  //     .catch((error) => console.error("Error fetching data:", error));
-  // };
-  // const deleteFood = (indexToDelete) => {
-  //   const itemToDelete = foodItems[indexToDelete];
-  //   setFoodItems((currentItems) =>
-  //     currentItems.filter((_, index) => index !== indexToDelete)
-  //   );
-  //   // Subtract the deleted item's values from totals
-  //   setTotalCalories((currentTotal) => currentTotal - itemToDelete.calories);
-  //   setTotalProteins((currentTotal) => currentTotal - itemToDelete.protein_g);
-  //   setTotalCarbs(
-  //     (currentTotal) => currentTotal - itemToDelete.carbohydrates_total_g
-  //   );
-  //   setTotalSugar((currentTotal) => currentTotal - itemToDelete.sugar_g);
-  //   setTotalSize((currentTotal) => currentTotal - itemToDelete.serving_size_g);
-  // };
-  // creates circle diagram (npm install chart.js react-chartjs-2)
-
-  // const chartData = {
-  //   labels: ["Calories", "Protein", "Carbs", "Sugar"],
-  //   datasets: [
-  //     {
-  //       label: "Nutrition",
-  //       data: [totalCalories, totalProteins, totalCarbs, totalSugar],
-  //       backgroundColor: [
-  //         "rgba(255, 99, 132, 0.6)",
-  //         "rgba(54, 162, 235, 0.6)",
-  //         "rgba(255, 206, 86, 0.6)",
-  //         "rgba(75, 192, 192, 0.6)",
-  //       ],
-  //       borderColor: [
-  //         "rgba(255, 99, 132, 1)",
-  //         "rgba(54, 162, 235, 1)",
-  //         "rgba(255, 206, 86, 1)",
-  //         "rgba(75, 192, 192, 1)",
-  //       ],
-  //       borderWidth: 1,
-  //     },
-  //   ],
-  // };
-  //ei saa tallennettua dataa backendiin. ongelma appuser oliossa joko täälä tai backissä
   const saveToDatabase = async () => {
     console.log(foodToSave); // Check if foodToSave is defined
     console.log(appUser);
@@ -201,11 +135,6 @@ function CalculateConsumption() {
     } catch (error) {
       console.error("Tallennusvirhe:", error.message);
     }
-  };
-
-  const test = () => {
-    console.log(appUser);
-
   };
 
   return (
@@ -272,17 +201,8 @@ function CalculateConsumption() {
               {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
             </h2>
           </div>
-          <button onClick={()=>test()}>Test </button>
         </div>
       )}
-      {/* <div>Total Serving Size: {totalSize}g</div>
-      <div>Total Calories: {totalCalories}</div>
-      <div>Total Protein: {totalProteins}g</div>
-      <div>Total Carbs: {totalCarbs}g</div>
-      <div>Total Sugar: {totalSugar}g</div> */}
-      {/* <div style={{ width: "300px", height: "300px" }}>
-        <Doughnut data={chartData} />
-      </div> */}
     </div>
   );
 }
