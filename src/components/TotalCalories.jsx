@@ -223,11 +223,11 @@ function CalculateConsumption() {
                 {totalSize} g of {foodName} has
               </h4>
 
-              <h4>{calories} kcal</h4>
-              <h4>{protein}g protein</h4>
-              <h4>{carbs}g carbs</h4>
-              <h4>{fat}g fat</h4>
-              <h4>{sugar}g sugar</h4>
+              <h4>{calories} Kcal</h4>
+              <h4>{protein}g Protein</h4>
+              <h4>{carbs}g Carbs</h4>
+              <h4>{fat}g Fat</h4>
+              <h4>{sugar}g Sugar</h4>
               <button
                 onClick={() => {
                   saveToDatabase();
@@ -272,7 +272,7 @@ function CalculateConsumption() {
               {eatenFoods.reduce((total, food) => total + food.sugar, 0)}
             </h2>
           </div>
-          <button onClick={()=>test()}>test </button>
+          <button onClick={()=>test()}>Test </button>
         </div>
       )}
       {/* <div>Total Serving Size: {totalSize}g</div>

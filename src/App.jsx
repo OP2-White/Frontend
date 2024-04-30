@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import { AppBar, Toolbar } from "@mui/material";
 import { useState } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -7,11 +7,16 @@ import CreateProduct from "./components/CreateProduct";
 import CalculateYourConsumption from "./components/CalculateYourConsumption";
 import TotalCalories from "./components/TotalCalories";
 import isLoggedIn from "./components/Login"
+import { useNavigate } from "react-router-dom"; 
 
 function App() {
+
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     sessionStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
+    navigate("/search-products");
   };
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn") === "true");
 

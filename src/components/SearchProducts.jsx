@@ -47,7 +47,7 @@ export default function SearchProducts() {
             className="searchProductsSearchButton"
             onClick={() => search()}
           >
-            search
+            Search
           </button>
         </div>
         {searchComplete && (
