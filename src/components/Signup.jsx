@@ -43,8 +43,9 @@ function Signup() {
   };
   return (
     <div className="signupPage">
+      <h1>Fill in your information </h1>
       <div className="signupContainer">
-        <h1>Fill in your information </h1>
+        <h1>Signup</h1>
         <div className="signupInput">
           <h2>Username: </h2>
           <input

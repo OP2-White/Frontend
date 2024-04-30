@@ -46,16 +46,15 @@ function CreateProduct() {
 
   const renderFields = () => {
     return fields.map((field) => (
-      <div key={field.name}>
-        <label>
-          {field.label}:
-          <input
-            type={field.type}
-            name={field.name}
-            value={newProduct[field.name]}
-            onChange={handleChange}
-          />
-        </label>
+      <div key={field.name} className="createProductInputsContainer">
+        <label>{field.label}:</label>
+        <input
+          type={field.type}
+          name={field.name}
+          value={newProduct[field.name]}
+          onChange={handleChange}
+        />
+
         <br />
       </div>
     ));
@@ -162,27 +161,44 @@ function CreateProduct() {
   return (
     <div className="create-product">
       <div className="createProductContainer">
-        <p>Create new product:</p>
-        <form>{renderFields()}</form>
-        <button onClick={() => saveToDatabase()}>Save</button>
+        <div className="inputsContainer">
+          <h1>Create new product:</h1>
+          <form>{renderFields()}</form>
+          <button onClick={() => saveToDatabase()}>Save</button>
+        </div>
       </div>
       <div className="list-product">
-        <p>Previously created:</p>
-        <ul>
-          {foodList.map((food, index) => (
-            <li key={index}>
-              {food.foodName} - {food.calories} calories
-              <button
-                className="eat"
-                onClick={() => {
-                  saveEatenToDatabase(food);
-                }}
-              >
-                Eat
-              </button>
-            </li>
-          ))}
-        </ul>
+        <h1>Community foods:</h1>
+
+        {foodList.map((food, index) => (
+          <div key={index} className="communityFoodsContainer">
+            <div className="communityFoodsHeader">
+              <h1>{food.foodName}</h1>
+            </div>
+            <div className="communityCaloriesHeader">
+              <h5>Calories: {food.calories}</h5>
+            </div>
+            <div className="communityOtherContainer">
+              <div className="communityProteinCarbs">
+                <h5>Protein: {food.protein}</h5>
+                <h5>Carbs: {food.carbs}</h5>
+              </div>
+              <div className="communityFatSugar">
+                <h5>Fat: {food.fat}</h5>
+                <h5>Sugar: {food.sugar}</h5>
+              </div>
+            </div>
+
+            <button
+              className="eat"
+              onClick={() => {
+                saveEatenToDatabase(food);
+              }}
+            >
+              Eat
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

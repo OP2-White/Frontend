@@ -47,35 +47,82 @@ body {
 .create-product {
   display: flex;
   flex-direction: row;
-  background-color: #2e2e2e;
+  max-height: 110vh;
 }
 
 .list-product {
-  background-color: #2e2e2e;
+  background-color: #212124;
   color: white;
   width: 40vw;
-  height: 50vh;
   margin: 5vh auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
+  height: auto;
+}
+
+.communityFoodsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(255, 254, 254, 0.5);
+  margin-bottom: 20px;
+}
+.communityCaloriesHeader,
+.communityFoodsHeader {
+  margin-left: auto;
+  margin-right: auto;
+}
+.communityOtherContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.communityProteinCarbs h5,
+.communityFatSugar h5,
+.communityProteinCarbs h5,
+.communityCaloriesHeader h5 {
+  font-size: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
 }
 
 .createProductContainer {
-  background-color: #2e2e2e;
+  background-color: #212124;
   color: white;
   width: 40vw;
   margin: 5vh auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createProductInputsContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: 66%;
+}
+.createProductInputsContainer input {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+}
+
+.createProductInputsContainer label {
 }
 
 .searchProductsContainer {
@@ -165,6 +212,7 @@ body {
   border-radius: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
+.createProductContainer input,
 .inputfieldsContainer input,
 .inputfieldsContainer select {
   height: 40px;
@@ -256,7 +304,7 @@ body {
 .totalCaloriesContainer {
   display: flex;
   width: 100vw;
-  height: 70vh;
+  height: 90vh;
   align-items: center;
   justify-content: center;
 }
@@ -268,7 +316,8 @@ body {
   width: 400px;
   justify-content: center;
   padding: 30px;
-  margin-top: 3%;
+  margin-top: auto;
+  margin-bottom: auto;
   border-radius: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
@@ -288,27 +337,30 @@ body {
   width: 400px;
   justify-content: center;
   padding: 30px;
-  margin-top: 3%;
+
   border-radius: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   margin-left: 10vw;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /*LOGIN PAGE */
 
-.loginpage {
+.loginpage,
+.signupPage {
   width: 100vw;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .pleaselogin {
   margin-left: auto;
   margin-right: auto;
-
-  margin-top: 3%;
 }
-.loginform {
+.loginform,
+.signupContainer {
   background-color: #212124;
   display: flex;
   flex-direction: column;
@@ -323,18 +375,21 @@ body {
   margin-right: auto;
   align-items: center;
 }
-.loginform input {
+.loginform input,
+.signupContainer input {
   height: 40px;
   font-size: 20px;
   width: 250px;
   margin-left: auto;
   margin-right: auto;
 }
-.loginheader h1 {
+.loginheader h1,
+.signupContainer h1 {
   margin-bottom: 0;
   margin-top: 0;
 }
-.loginButton button {
+.loginButton button,
+.signupButton {
   height: 40px;
   width: 250px;
   margin: 0;

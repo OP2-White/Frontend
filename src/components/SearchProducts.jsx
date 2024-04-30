@@ -33,7 +33,6 @@ export default function SearchProducts() {
       .then((data) => setSearchComplete(true));
     console.log(searchResult);
     let userInformation = JSON.parse(sessionStorage.getItem("appUser"));
-    alert(userInformation.passwordHash);
   };
   return (
     <>
