@@ -126,11 +126,6 @@ This is an example of how to list things you need to use the software and how to
 <kbd> <img src="images/Screenshot 2024-05-06 at 14.42.44.png" width="500" > </kbd>
 <kbd> <img src="images/Screenshot 2024-05-06 at 14.43.12.png" width="500" > </kbd>
 
-
-
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
