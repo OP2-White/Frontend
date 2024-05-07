@@ -157,7 +157,7 @@ Project Link: [https://github.com/OP2-White](https://github.com/OP2-White)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Loppuraportti
-<a href="https://github.com/OP2-White/Frontend/blob/main/loppuraportti.md"> <a>
+[https://github.com/OP2-White/Frontend/blob/main/loppuraportti.md]
 
 
 
